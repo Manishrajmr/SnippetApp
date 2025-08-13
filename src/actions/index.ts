@@ -29,3 +29,36 @@ export const deleteSnippet = async (id:number) =>{
     redirect("/");
 
 }
+
+
+export async function createSnippet(prevState :{message:string},formData:FormData){
+
+    try{
+        
+        const title = formData.get("title") as string;
+        const code = formData.get("code") as string;
+
+        if(typeof title!="string" || title.length<4){
+            return {message:"Title is required and must be longer"}
+        }
+
+        if(typeof code!="string" || title.length<8){
+            return {message:"code is required and must be longer"}
+        }
+
+        // await prisma.snippet.create({
+        //     data:{
+        //         title,
+        //         code
+        //     }
+        // });
+
+        throw new Error("Oops somthing went wrong!");
+
+    }
+    catch (error:any){
+        return {message:error.message};
+    }
+    
+    redirect("/");
+}  
