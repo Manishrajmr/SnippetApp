@@ -65,3 +65,14 @@ const SnippetDetailPage = async({params,}:SnippetDetailProps) => {
 }
 
 export default SnippetDetailPage;
+
+//dynamic route ko static route bana ke caching enable krna h toh
+export async function generateStaticParams() {
+
+  const snippets = await prisma.snippet.findMany();
+
+  return snippets.map((snippet)=>{
+    return {id:snippet.id.toString()}
+  })
+
+}

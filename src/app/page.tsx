@@ -4,6 +4,9 @@ import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { link } from "fs";
 
+// export const dynamic = "force-dynamic" //disabling the caching
+// export const revalidate = 0;
+
 
 export default async function Home() {
 
@@ -12,7 +15,7 @@ export default async function Home() {
 
   return (
    <div >
-    <h1 className="font-bold text-4xl" >Home</h1>
+    <h1 className="font-bold text-4xl" >DSA Problems</h1>
     <div className="flex items-center justify-between" >
       <h1>Snippet</h1>
       <Link href={"/snippet/new"} ><Button>New</Button></Link>
